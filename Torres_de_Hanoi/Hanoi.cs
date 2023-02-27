@@ -16,7 +16,6 @@ namespace Torres_de_Hanoi
 
         public int iterativo(int n, Pila ini, Pila fin, Pila aux)
         {
-            String adios = "hola a todos";
             return 0;
         }
 
