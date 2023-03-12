@@ -8,7 +8,7 @@ namespace Torres_de_Hanoi
 {
     class Pila
     {
-        public int Size { get; set; }
+
         /* TODO: Elegir tipo de Top
         public int Top { get; set; }
         public String Top { get; set; }        
@@ -19,24 +19,59 @@ namespace Torres_de_Hanoi
         */
 
         /* TODO: Implementar métodos */
+        public int Size { get; set; }
+        public int Top { get; set; }
+        public List<Disco> Elementos { get; set; }
         public Pila()
         {
+            Size = 0;
+            Elementos = new List<Disco>();
+            Top = 0;
+        }
 
+        public Pila(int size)
+        {
+            this.Size = Size;
+            Elementos = new List<Disco>();
+            Top = -1;
+
+            int i = Size;
+            while (i > 0)
+            {
+                Elementos.Add(new Disco(i));
+                Top = Elementos.Last().Valor;
+                i--;
+            }
         }
 
         public void push(Disco d)
         {
-
+            Elementos.Add(d);
+            Top = Elementos.Last().Valor;
         }
 
         public Disco pop()
         {
-            return null;
-        }                
+            Disco d = null;
+            if (Elementos.Count > 0)
+            {
+                d = Elementos[Elementos.Count - 1];
+                Elementos.RemoveAt(Elementos.Count - 1);
+                if (Elementos.Count > 0)
+                {
+                    Top = Elementos[Elementos.Count - 1].Valor;
+                }
+                else
+                {
+                    Top = 0;
+                }
+            }
+            return d;
+        }
 
         public bool isEmpty()
         {
-            return true;
+            return !Elementos.Any();
         }
 
     }
