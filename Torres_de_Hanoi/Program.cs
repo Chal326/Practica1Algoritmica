@@ -36,7 +36,10 @@ namespace Torres_de_Hanoi
                                 Pila iniI = new Pila(piezas);
                                 Pila auxI = new Pila();
                                 Pila finI = new Pila();
+
                                 int movimientosI = new Hanoi().iterativo(piezas, iniI, finI, auxI);
+
+
                                 Console.WriteLine("Resuelto en " + movimientosI + " movimientos\n");
                                 run = true;
                                 break;
@@ -45,10 +48,6 @@ namespace Torres_de_Hanoi
                                 Pila iniR = new Pila(piezas);
                                 Pila auxR = new Pila();
                                 Pila finR = new Pila();
-                                Console.WriteLine("Situacion inicial:");
-                                Console.WriteLine("Torre iNI: " + iniR.ToString());
-                                Console.WriteLine("Torre AUX: " + auxR.ToString());
-                                Console.WriteLine("Torre FIN: " + finR.ToString() + "\n");
                                 int movimientosR = new Hanoi().recursivo(piezas, iniR, finR, auxR);
                                 Console.WriteLine("Resuelto en " + movimientosR + " movimientos\n");
                                 run = true;

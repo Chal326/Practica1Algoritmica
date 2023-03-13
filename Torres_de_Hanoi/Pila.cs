@@ -20,25 +20,28 @@ namespace Torres_de_Hanoi
             Elementos = new List<Disco>();
             Top = 0;
         }
+
         //Constructor Pila
-        public Pila(int Size)
+        public Pila(int size)
         {
-            this.Size = Size;
-            Elementos = new List<Disco>();
+            this.Size = size;  //tamaño de la pila
+            Elementos = new List<Disco>(size);
             Top = -1;
 
-            for (int i = this.Size; i > 0; i--)
+            for (int i = 1; i <= this.Size; i++)
             {
-                Elementos.Add(new Disco(i));
-                Top = Elementos.Last().Valor;
+                Elementos.Add(new Disco(this.Size - i + 1)); // Agrega un nuevo objeto Disco a la propiedad Elementos con el tamaño del disco decreciente y comenzando desde 1.
             }
+
+            Top = Elementos.Last().Valor;
         }
+
 
         //Metodo para añadir un disco a la pila
         public void push(Disco d)
         {
             Elementos.Add(d);
-            Top = Elementos.Last().Valor;
+            Top = Elementos.Last().Valor; // asignamos a TOP el valor del ultimo elemento de la lista
         }
 
         //Metodo para eliminar un disco de la pila
@@ -46,14 +49,16 @@ namespace Torres_de_Hanoi
         {
             Disco d = Elementos.Last();
             Elementos.Remove(d);
-            try
+            int lastIndex = Elementos.Count - 1;
+            if (lastIndex >= 0)
             {
                 Top = Elementos.Last().Valor;
             }
-            catch (Exception)
+            else
             {
                 Top = 0;
             }
+
             return d;
         }
 

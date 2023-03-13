@@ -9,6 +9,7 @@ namespace Torres_de_Hanoi
     class Hanoi
     {
         public int movements { get; set; }
+
         public Hanoi()
         {
             movements = 0;
@@ -29,11 +30,11 @@ namespace Torres_de_Hanoi
         public int iterativo(int n, Pila ini, Pila fin, Pila aux)
         {
             // Comprobamos si n es un número impar o no
-            bool isOdd = (n % 2 != 0);
+            bool IMPAR = (n % 2 != 0);
             int movements = 0;
             while (fin.Elementos.Count < n)
             {
-                if (isOdd)
+                if (IMPAR)
                 {
                     mover_disco(ini, fin);
                     movements++;
